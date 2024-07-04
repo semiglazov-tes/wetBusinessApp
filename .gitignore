@@ -65,6 +65,7 @@ npm-debug.log
 
 # Ignore Visual Studio Code files
 .vscode/
+.vs/
 
 # Ignore JetBrains Rider files
 .idea/
