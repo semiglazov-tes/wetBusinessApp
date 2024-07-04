@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2dc1af9e-4b0e-437d-8f13-6d51b6fe38ef": {
+      "ProjectGuid": "2dc1af9e-4b0e-437d-8f13-6d51b6fe38ef",
+      "DisplayName": "WetBusinessApp.Domain",
+      "ColorIndex": 0
+    },
+    "15394658-ca1a-4d10-97c8-a2274843acfe": {
+      "ProjectGuid": "15394658-ca1a-4d10-97c8-a2274843acfe",
+      "DisplayName": "WetBusinessApp.Infrastructure",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

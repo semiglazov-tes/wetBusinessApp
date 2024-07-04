@@ -1,0 +1,79 @@
+# Ignore compiled output and other generated files for Angular
+/dist/
+/*.js
+/*.js.map
+/*.css
+/*.css.map
+
+# Ignore Visual Studio files for .NET projects
+*.obj
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+*.cache
+*.log
+*.vspscc
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.build/
+
+# Ignore SQL Server files for .NET projects (if used)
+*.mdf
+*.ldf
+
+# Ignore PostgreSQL backup files and logs
+*.backup
+*.sql
+*.sql.gz
+*.sql.tar.gz
+/pgAdmin/
+
+# Ignore .NET build output
+/bin/
+/obj/
+
+# Ignore npm debug log
+npm-debug.log
+
+# Ignore PostgreSQL temporary files
+.pgadmin/
+
+# Ignore environment-specific files
+.env
+
+# Ignore Angular CLI configuration file
+.angular-cli.json
+
+# Ignore Visual Studio Code files
+.vscode/
+
+# Ignore JetBrains Rider files
+.idea/
+
+# Ignore TypeScript configuration file
+tsconfig.json
+
+# Ignore PostgresSQL configuration file
+postgresql.conf
+
+# Ignore package-lock.json file for npm
+package-lock.json
