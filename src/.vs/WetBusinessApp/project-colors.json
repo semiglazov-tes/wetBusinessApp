@@ -10,7 +10,12 @@
       "ProjectGuid": "15394658-ca1a-4d10-97c8-a2274843acfe",
       "DisplayName": "WetBusinessApp.Infrastructure",
       "ColorIndex": 1
+    },
+    "df769530-9b7a-4259-a9e4-ff7e8721de26": {
+      "ProjectGuid": "df769530-9b7a-4259-a9e4-ff7e8721de26",
+      "DisplayName": "WetBusinessApp.Presentation",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

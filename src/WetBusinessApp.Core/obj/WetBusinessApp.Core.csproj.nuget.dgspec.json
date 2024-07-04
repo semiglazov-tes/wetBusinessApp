@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj": {}
+    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj": {}
   },
   "projects": {
-    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj": {
+    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
-        "projectName": "WetBusinessApp.Infrastructure",
-        "projectPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
+        "projectUniqueName": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj",
+        "projectName": "WetBusinessApp.Core",
+        "projectPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj",
         "packagesPath": "C:\\Users\\Elena\\.nuget\\packages\\",
-        "outputPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\obj\\",
+        "outputPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Elena\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,12 +44,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
