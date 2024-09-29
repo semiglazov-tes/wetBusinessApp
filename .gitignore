@@ -1,3 +1,4 @@
+/data/
 # Ignore compiled output and other generated files for Angular
 /dist/
 /*.js

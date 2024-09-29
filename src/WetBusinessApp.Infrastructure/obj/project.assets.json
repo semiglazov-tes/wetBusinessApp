@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Elena\\.nuget\\packages\\": {}
+    "C:\\Users\\semig\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
+      "projectUniqueName": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
       "projectName": "WetBusinessApp.Infrastructure",
-      "projectPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Elena\\.nuget\\packages\\",
-      "outputPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\obj\\",
+      "projectPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\semig\\.nuget\\packages\\",
+      "outputPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Elena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\semig\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,26 +62,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.29, 6.0.29]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.29, 6.0.29]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.29, 6.0.29]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

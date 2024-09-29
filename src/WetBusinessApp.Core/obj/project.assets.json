@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Domain\\WetBusinessApp.Domain.csproj",
-      "projectName": "WetBusinessApp.Domain",
-      "projectPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Domain\\WetBusinessApp.Domain.csproj",
+      "projectUniqueName": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj",
+      "projectName": "WetBusinessApp.Core",
+      "projectPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj",
       "packagesPath": "C:\\Users\\semig\\.nuget\\packages\\",
-      "outputPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Domain\\obj\\",
+      "outputPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\semig\\AppData\\Roaming\\NuGet\\NuGet.Config",

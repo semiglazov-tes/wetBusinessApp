@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj": {}
+    "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj": {}
   },
   "projects": {
-    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj": {
+    "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj",
+        "projectUniqueName": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj",
         "projectName": "WetBusinessApp.Presentation",
-        "projectPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj",
-        "packagesPath": "C:\\Users\\Elena\\.nuget\\packages\\",
-        "outputPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\obj\\",
+        "projectPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\WetBusinessApp.Presentation.csproj",
+        "packagesPath": "C:\\Users\\semig\\.nuget\\packages\\",
+        "outputPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Presentation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Elena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\semig\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,24 +62,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.29, 6.0.29]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.29, 6.0.29]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.29, 6.0.29]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.29, 6.0.29]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -87,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
