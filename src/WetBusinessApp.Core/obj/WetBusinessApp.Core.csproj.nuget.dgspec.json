@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj": {}
+    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj": {}
   },
   "projects": {
-    "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj": {
+    "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
-        "projectName": "WetBusinessApp.Infrastructure",
-        "projectPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\WetBusinessApp.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\semig\\.nuget\\packages\\",
-        "outputPath": "D:\\git\\wetBusinessApp\\src\\WetBusinessApp.Infrastructure\\obj\\",
+        "projectUniqueName": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj",
+        "projectName": "WetBusinessApp.Core",
+        "projectPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\WetBusinessApp.Core.csproj",
+        "packagesPath": "C:\\Users\\Elena\\.nuget\\packages\\",
+        "outputPath": "E:\\IT\\Apps\\wetBusinessApp\\src\\WetBusinessApp.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\semig\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Elena\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,12 +44,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -62,12 +55,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.29, 6.0.29]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.29, 6.0.29]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.29, 6.0.29]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

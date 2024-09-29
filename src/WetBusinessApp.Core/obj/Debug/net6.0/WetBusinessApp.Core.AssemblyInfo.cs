@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("WetBusinessApp.Infrastructure")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("WetBusinessApp.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46587b0c1e422e868a11c447c4068ff6e6581b9e")]
-[assembly: System.Reflection.AssemblyProductAttribute("WetBusinessApp.Infrastructure")]
-[assembly: System.Reflection.AssemblyTitleAttribute("WetBusinessApp.Infrastructure")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79765d2565e2f8914b7192ea672806cf63f40de6")]
+[assembly: System.Reflection.AssemblyProductAttribute("WetBusinessApp.Core")]
+[assembly: System.Reflection.AssemblyTitleAttribute("WetBusinessApp.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
