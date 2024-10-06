@@ -1,5 +1,6 @@
 using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Application.Services;
+using WetBusinessApp.Application.Utils.Auth;
 using WetBusinessApp.Infrastructure.DB;
 using WetBusinessApp.Infrastructure.DB.Repositories;
 
@@ -10,7 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<WetBusinessDContext>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-
+builder.Services.AddAuth(builder.Configuration);
 
 var app = builder.Build();
 
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

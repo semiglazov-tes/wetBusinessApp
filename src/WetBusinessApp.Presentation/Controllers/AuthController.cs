@@ -22,5 +22,12 @@ namespace WetBusinessApp.Presentation.Controllers
             await _userService.Register(request.UserName, request.UserEmail, request.Password);
             return Results.Ok();
         }
+
+        [HttpPost("login")]
+        public async Task<IResult> Login([FromBody] LoginRequest request)
+        {
+            var jwtTokenString = await _userService.Login(request.UserName, request.Password);
+            return Results.Ok(jwtTokenString);
+        }
     }
 }

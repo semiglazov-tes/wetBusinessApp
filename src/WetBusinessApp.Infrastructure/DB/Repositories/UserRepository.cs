@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Domain;
 using WetBusinessApp.Infrastructure.DB.Entity;
@@ -42,9 +43,11 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
             
         }
 
-        public Task<User> GetByUserEmail(Guid id)
+        public async Task<User> GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            var userEntity =  await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            var user = User.Create(userEntity.Id, userEntity.UserName, userEntity.UserEmail, userEntity.PasswordHash);
+            return user;
         }
 
         public Task Update(User item)

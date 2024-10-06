@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WetBusinessApp.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31d96d1d29c74648ce3804f9d37548299db2588c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deafc8a4bd14606a4d28e849cbeddf7edc2cd502")]
 [assembly: System.Reflection.AssemblyProductAttribute("WetBusinessApp.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WetBusinessApp.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

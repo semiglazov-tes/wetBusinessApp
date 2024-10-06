@@ -1,15 +1,33 @@
 using WetBusinessApp.Domain;
 using WetBusinessApp.Application.Abstractions;
-using WetBusinessApp.Application.Utils;
+using WetBusinessApp.Application.Utils.Auth;
 
 namespace WetBusinessApp.Application.Services;
 
 public class UserService
 {
     private readonly IUserRepository _userRepository;
-    public UserService(IUserRepository userRepository)
+    private readonly JwtToken _jwtToken;
+    public UserService(IUserRepository userRepository, JwtToken jwtToken)
     {
         _userRepository = userRepository;
+        _jwtToken = jwtToken;
+    }
+
+    public async Task<string> Login(string userName, string password)
+    {
+        var user = await _userRepository.GetByUserName(userName);
+        var passwordIsValid = PasswordHasher.Verify(password, user.PasswordHash);
+        if (passwordIsValid) 
+        {
+            var jwtTokenString = _jwtToken.Generate(user);
+            return jwtTokenString;
+        }
+        else
+        {
+            throw new Exception("Пароль неверен");
+        }
+
     }
 
     public async Task Register(string userName, string userEmail, string password )
