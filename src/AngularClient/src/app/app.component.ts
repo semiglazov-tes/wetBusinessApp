@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from "./auth/login/login.component";
+import {AuthComponent} from "./auth/auth/auth.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, LoginComponent]
+  imports: [RouterOutlet, AuthComponent]
 })
 export class AppComponent {
   title = 'AngularClient';
