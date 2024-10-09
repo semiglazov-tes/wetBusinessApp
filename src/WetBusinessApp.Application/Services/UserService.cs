@@ -7,8 +7,8 @@ namespace WetBusinessApp.Application.Services;
 public class UserService
 {
     private readonly IUserRepository _userRepository;
-    private readonly JwtToken _jwtToken;
-    public UserService(IUserRepository userRepository, JwtToken jwtToken)
+    private readonly JwtTokenService _jwtToken;
+    public UserService(IUserRepository userRepository, JwtTokenService jwtToken)
     {
         _userRepository = userRepository;
         _jwtToken = jwtToken;
@@ -36,4 +36,11 @@ public class UserService
         var user = User.Create(Guid.NewGuid(), userName, userEmail, passworHash);
         await _userRepository.Create(user);
     }
+
+    public async Task<List<User>> GetAllUsers()
+    {
+        var users = await _userRepository.GetAllUser();
+        return users;
+    }
+
 }

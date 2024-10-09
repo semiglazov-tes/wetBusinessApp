@@ -50,6 +50,19 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
             return user;
         }
 
+        public async Task<List<User>> GetAllUser()
+        {
+            var userEntitys = await _dbContext.Users.ToListAsync();
+            List<User> users = new List<User>();
+            foreach (var item in userEntitys)
+            {
+                var user = User.Create(item.Id, item.UserName, item.UserEmail, item.PasswordHash);
+                users.Add(user);
+            }
+            return users;
+        }
+
+
         public Task Update(User item)
         {
             throw new NotImplementedException();

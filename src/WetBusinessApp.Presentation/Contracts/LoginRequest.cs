@@ -9,5 +9,6 @@ namespace WetBusinessApp.Presentation.Contracts
        
         [Required]
         public string? Password { get; set; }
+
     }
 }

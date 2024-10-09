@@ -13,7 +13,7 @@ namespace WetBusinessApp.Application.Utils.Auth
         {
 
             servicesCollection.Configure<AuthSettings>(configuration.GetSection("AuthSettings"));
-            servicesCollection.AddScoped<JwtToken>();
+            servicesCollection.AddScoped<JwtTokenService>();
 
             var auttSettings = configuration.GetSection(nameof(AuthSettings)).Get<AuthSettings>();
 
@@ -27,6 +27,15 @@ namespace WetBusinessApp.Application.Utils.Auth
                                       ValidateLifetime = true,
                                       ValidateIssuerSigningKey = true,
                                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(auttSettings.SecretKey))
+                                  };
+
+                                  o.Events = new JwtBearerEvents
+                                  {
+                                      OnMessageReceived = context =>
+                                      {
+                                          context.Token = context.Request.Cookies["token"];
+                                          return Task.CompletedTask;
+                                      }
                                   };
 
                               });

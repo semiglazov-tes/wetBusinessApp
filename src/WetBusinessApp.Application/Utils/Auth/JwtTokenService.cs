@@ -8,11 +8,11 @@ using WetBusinessApp.Domain;
 
 namespace WetBusinessApp.Application.Utils.Auth
 {
-    public class JwtToken
+    public class JwtTokenService
     {
         public readonly IOptions<AuthSettings> _authOptions;
 
-        public JwtToken(IOptions<AuthSettings> authOptions)
+        public JwtTokenService(IOptions<AuthSettings> authOptions)
         {
             _authOptions = authOptions;
 

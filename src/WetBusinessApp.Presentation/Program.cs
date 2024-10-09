@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.CookiePolicy;
 using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Application.Services;
 using WetBusinessApp.Application.Utils.Auth;
@@ -23,6 +24,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    HttpOnly = HttpOnlyPolicy.Always,
+    Secure = CookieSecurePolicy.Always
+});
 
 app.UseAuthentication();
 

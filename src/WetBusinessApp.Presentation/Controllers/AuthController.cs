@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WetBusinessApp.Application.Services;
 using WetBusinessApp.Presentation.Contracts;
@@ -17,7 +16,7 @@ namespace WetBusinessApp.Presentation.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<IResult>  Register([FromBody] RegisterUserRequest request)
+        public async Task<IResult> Register([FromBody] RegisterUserRequest request)
         {
             await _userService.Register(request.UserName, request.UserEmail, request.Password);
             return Results.Ok();
@@ -26,8 +25,9 @@ namespace WetBusinessApp.Presentation.Controllers
         [HttpPost("login")]
         public async Task<IResult> Login([FromBody] LoginRequest request)
         {
-            var jwtTokenString = await _userService.Login(request.UserName, request.Password);
-            return Results.Ok(jwtTokenString);
+            var token = await _userService.Login(request.UserName, request.Password);
+            Response.Cookies.Append("token", token);
+            return Results.Ok();
         }
     }
 }
