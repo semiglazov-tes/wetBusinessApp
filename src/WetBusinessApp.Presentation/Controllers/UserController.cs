@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WetBusinessApp.Application.Services;
 using WetBusinessApp.Domain;
+using WetBusinessApp.Domain.Entities;
 using WetBusinessApp.Presentation.Contracts;
 
 namespace WetBusinessApp.Presentation.Controllers

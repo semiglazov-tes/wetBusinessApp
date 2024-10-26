@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WetBusinessApp.Domain;
+using WetBusinessApp.Domain.Entities;
 
 namespace WetBusinessApp.Application.Utils.Auth
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace WetBusinessApp.Domain
+namespace WetBusinessApp.Domain.Entities
 {
     public class User
     {
@@ -7,7 +7,7 @@ namespace WetBusinessApp.Domain
         public string UserName { get; private set; }
         public string UserEmail { get; private set; }
         public string PasswordHash { get; private set; }
-        public User(Guid id, string userName, string userEmail, string passHash)
+        private User(Guid id, string userName, string userEmail, string passHash)
         {
             Id = id;
             UserName = userName;

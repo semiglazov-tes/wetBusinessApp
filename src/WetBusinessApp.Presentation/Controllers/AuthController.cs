@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using WetBusinessApp.Application.Services;
 using WetBusinessApp.Presentation.Contracts;
+using WetBusinessApp.Presentation.Contracts.Login;
+using WetBusinessApp.Presentation.Contracts.Register;
 
 namespace WetBusinessApp.Presentation.Controllers
 {
@@ -16,7 +18,7 @@ namespace WetBusinessApp.Presentation.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<IResult> Register([FromBody] RegisterUserRequest request)
+        public async Task<IResult> Register([FromBody] RegisterRequest request)
         {
             await _userService.Register(request.UserName, request.UserEmail, request.Password);
             return Results.Ok();

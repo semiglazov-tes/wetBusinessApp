@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WetBusinessApp.Presentation.Contracts
+namespace WetBusinessApp.Presentation.Contracts.Login
 {
     public record LoginRequest
     {

@@ -1,6 +1,7 @@
 using WetBusinessApp.Domain;
 using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Application.Utils.Auth;
+using WetBusinessApp.Domain.Entities;
 
 namespace WetBusinessApp.Application.Services;
 
@@ -25,7 +26,7 @@ public class UserService
         }
         else
         {
-            throw new Exception("Οΰπξλό νεβεπεν");
+            throw new Exception("ΠΠ°Ρ€ΠΎΠ»Ρ Π½ΠµΠ²ΠµΡ€ΠµΠ½");
         }
 
     }

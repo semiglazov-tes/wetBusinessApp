@@ -16,4 +16,8 @@
     <ProjectReference Include="..\WetBusinessApp.Application\WetBusinessApp.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="appsettings.Development.json" />
+  </ItemGroup>
+
 </Project>

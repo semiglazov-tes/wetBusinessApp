@@ -1,4 +1,5 @@
 using WetBusinessApp.Domain;
+using WetBusinessApp.Domain.Entities;
 
 namespace WetBusinessApp.Application.Abstractions;
 

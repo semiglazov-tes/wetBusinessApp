@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WetBusinessApp.Presentation.Contracts;
+namespace WetBusinessApp.Presentation.Contracts.Register;
 
-public record RegisterUserRequest
+public record RegisterRequest
 {
      [Required]
      public string? UserName { get; set; }

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WetBusinessApp.Application.Abstractions;
-using WetBusinessApp.Domain;
-using WetBusinessApp.Infrastructure.DB.Entity;
+using WetBusinessApp.Domain.Entities;
+using WetBusinessApp.Infrastructure.DB.Mapping;
 
 namespace WetBusinessApp.Infrastructure.DB.Repositories
 {
@@ -9,7 +9,7 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
     {
         private bool _disposed = false;
         private readonly WetBusinessDContext _dbContext;
-        protected virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)   
         {
             if (_disposed) return;
             if (disposing)
@@ -31,14 +31,8 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
 
         public async Task Create(User item)
         {
-            var user = new UserEntity()
-            {
-                Id = item.Id,
-                UserName = item.UserName,
-                UserEmail = item.UserEmail,
-                PasswordHash = item.PasswordHash
-            };
-            await _dbContext.Users.AddAsync(user);
+            var userEntity = item.UserToUserEntity(); 
+            await _dbContext.Users.AddAsync(userEntity);
             await _dbContext.SaveChangesAsync();
             
         }
@@ -46,7 +40,7 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
         public async Task<User> GetByUserName(string userName)
         {
             var userEntity =  await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
-            var user = User.Create(userEntity.Id, userEntity.UserName, userEntity.UserEmail, userEntity.PasswordHash);
+            var user = userEntity.UserEntityToUser();
             return user;
         }
 
@@ -56,7 +50,7 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
             List<User> users = new List<User>();
             foreach (var item in userEntitys)
             {
-                var user = User.Create(item.Id, item.UserName, item.UserEmail, item.PasswordHash);
+                var user = item.UserEntityToUser();
                 users.Add(user);
             }
             return users;
