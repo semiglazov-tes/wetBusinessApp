@@ -7,6 +7,7 @@ using WetBusinessApp.Infrastructure.DB.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<WetBusinessDContext>();
@@ -31,6 +32,10 @@ app.UseCookiePolicy(new CookiePolicyOptions
     HttpOnly = HttpOnlyPolicy.Always,
     Secure = CookieSecurePolicy.Always
 });
+
+app.UseCors(policyBuilder => policyBuilder.WithOrigins(" http://localhost:4200")
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseAuthentication();
 
