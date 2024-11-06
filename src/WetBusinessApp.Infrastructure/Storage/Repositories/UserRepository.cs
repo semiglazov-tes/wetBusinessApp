@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Domain.Entities;
-using WetBusinessApp.Infrastructure.DB.Mapping;
+using WetBusinessApp.Infrastructure.DB;
+using WetBusinessApp.Infrastructure.Storage.Mapping;
 
-namespace WetBusinessApp.Infrastructure.DB.Repositories
+namespace WetBusinessApp.Infrastructure.Storage.Repositories
 {
     public class UserRepository : IUserRepository
     {
@@ -55,8 +56,7 @@ namespace WetBusinessApp.Infrastructure.DB.Repositories
             }
             return users;
         }
-
-
+        
         public Task Update(User item)
         {
             throw new NotImplementedException();

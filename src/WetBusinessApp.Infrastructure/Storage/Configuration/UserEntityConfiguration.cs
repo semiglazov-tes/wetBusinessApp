@@ -1,8 +1,7 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WetBusinessApp.Infrastructure.DB.Entity;
 
-namespace WetBusinessApp.Infrastructure.DB.Configuration
+namespace WetBusinessApp.Infrastructure.Storage.Configuration
 {
     public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
     {

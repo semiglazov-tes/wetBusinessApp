@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+.menu{
+  position: absolute;
+  top: 3%;
+  left: 1%;
+  display: grid;
+  grid-auto-rows: 60px;
+  font-family: 'Nunito', sans-serif;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.menu__item{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  color: #333333;
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  position: relative;
+}
+
+.menu__ic{
+
+}
+
+.menu__text{
+  position: absolute;
+  top: 50%;
+  left: 119%;
+  z-index: -2;
+  background-color: white;
+  color: black;
+  border-radius: 0 100px 100px 0;
+  transform: translateY(-50%);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  transition: all 0.3s ease-in-out ;
+}
+
+.menu__item:hover .menu__ic{
+  font-weight: bold;
+}
+
+.menu__item:hover .menu__text{
+  padding: 14px 24px;
+  z-index: 0;
+}
+

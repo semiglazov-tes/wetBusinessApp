@@ -3,7 +3,7 @@ using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Application.Services;
 using WetBusinessApp.Application.Utils.Auth;
 using WetBusinessApp.Infrastructure.DB;
-using WetBusinessApp.Infrastructure.DB.Repositories;
+using WetBusinessApp.Infrastructure.Storage.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +18,11 @@ builder.Services.AddAuth(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+/*if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+}*/
 
 app.UseHttpsRedirection();
 
@@ -33,9 +33,10 @@ app.UseCookiePolicy(new CookiePolicyOptions
     Secure = CookieSecurePolicy.Always
 });
 
-app.UseCors(policyBuilder => policyBuilder.WithOrigins(" http://localhost:4200")
+app.UseCors(policyBuilder => policyBuilder.WithOrigins("http://localhost:4200")
     .AllowAnyMethod()
-    .AllowAnyHeader());
+    .AllowAnyHeader()
+    .AllowCredentials());
 
 app.UseAuthentication();
 

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\WetBusinessApp.Application\WetBusinessApp.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Storage\Entity\" />
+  </ItemGroup>
+
 </Project>

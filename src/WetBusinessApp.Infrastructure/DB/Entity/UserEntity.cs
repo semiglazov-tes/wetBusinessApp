@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-
-
 namespace WetBusinessApp.Infrastructure.DB.Entity
 {
     [Table("Users")]

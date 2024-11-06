@@ -8,11 +8,11 @@ namespace WetBusinessApp.Application.Services;
 public class UserService
 {
     private readonly IUserRepository _userRepository;
-    private readonly JwtTokenService _jwtToken;
-    public UserService(IUserRepository userRepository, JwtTokenService jwtToken)
+    private readonly JwtTokenService _jwtTokenService;
+    public UserService(IUserRepository userRepository, JwtTokenService jwtTokenService)
     {
         _userRepository = userRepository;
-        _jwtToken = jwtToken;
+        _jwtTokenService = jwtTokenService;
     }
 
     public async Task<string> Login(string userName, string password)
@@ -21,7 +21,7 @@ public class UserService
         var passwordIsValid = PasswordHasher.Verify(password, user.PasswordHash);
         if (passwordIsValid) 
         {
-            var jwtTokenString = _jwtToken.Generate(user);
+            var jwtTokenString = _jwtTokenService.Generate(user);
             return jwtTokenString;
         }
         else

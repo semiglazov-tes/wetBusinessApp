@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WetBusinessApp.Infrastructure.DB.Entity;
-using WetBusinessApp.Infrastructure.DB.Configuration;
-  
+using WetBusinessApp.Infrastructure.Storage.Configuration;
+
 namespace WetBusinessApp.Infrastructure.DB
 {
     public class WetBusinessDContext: DbContext

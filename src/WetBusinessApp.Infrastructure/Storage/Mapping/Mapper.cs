@@ -1,7 +1,7 @@
 using WetBusinessApp.Domain.Entities;
 using WetBusinessApp.Infrastructure.DB.Entity;
 
-namespace WetBusinessApp.Infrastructure.DB.Mapping;
+namespace WetBusinessApp.Infrastructure.Storage.Mapping;
 
 public static  class Mapper
 {
