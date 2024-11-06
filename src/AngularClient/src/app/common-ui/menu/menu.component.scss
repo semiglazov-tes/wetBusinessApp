@@ -3,15 +3,28 @@
 
 .menu{
   position: absolute;
+  z-index: 0;
   top: 3%;
   left: 1%;
   display: grid;
   grid-auto-rows: 60px;
   font-family: 'Nunito', sans-serif;
-  background-color: white;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.menu::before{
+  content:'';
+  display: block;
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-color: white;
+  z-index: -2;
+  border-radius: 10px;
 }
 
 .menu__item{
@@ -26,28 +39,105 @@
 }
 
 .menu__ic{
-
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .menu__text{
   position: absolute;
   top: 50%;
-  left: 119%;
-  z-index: -2;
+  left: 0;
+  z-index: -3;
   background-color: white;
   color: black;
+  max-width: 0;
+  overflow: hidden;
+  padding: 0;
   border-radius: 0 100px 100px 0;
   transform: translateY(-50%);
   box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  transition: all 0.3s ease-in-out ;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu__item:hover .menu__ic{
   font-weight: bold;
+  color: white;
+  transition: all 0.3s ease-in-out 0.2s;
 }
 
 .menu__item:hover .menu__text{
-  padding: 14px 24px;
-  z-index: 0;
+  left: 119%;
+  max-width: 200%;
+  padding: 14px 24px 14px 32px;
 }
+
+.menu__item:last-child::after,
+.menu__item:last-child::before{
+  content:'';
+  display: block;
+  position: absolute;
+  top: calc((60px * -5) - 10px);
+  left: 0;
+  z-index: -1;
+  width: 60px;
+  height: 60px;
+  background-color: blue;
+  border-radius: 10px;
+  transition: all 0.3s ease-out ;
+}
+
+.menu__item:last-child::after{
+  background-color: grey;
+  border-radius: 0;
+}
+
+.menu__item:nth-child(1):hover ~ .menu__item:last-child::before {
+  top: calc(60px * -4);
+  animation: animation 0.3s;
+}
+
+.menu__item:nth-child(2):hover ~ .menu__item:last-child::before {
+  top: calc(60px * -3);
+  animation: animation2 0.3s;
+}
+
+.menu__item:nth-child(3):hover ~ .menu__item:last-child::before {
+  top: calc(60px * -2);
+  animation: animation 0.3s;
+}
+
+.menu__item:nth-child(4):hover ~ .menu__item:last-child::before {
+  top: calc(60px * -1);
+  animation: animation2 0.3s;
+}
+
+.menu__item:last-child:hover::before{
+  top: 0;
+  animation: animation 0.3s;
+}
+
+@keyframes animation{
+  0%{
+    transform: scale(1,1);
+  }
+  50%{
+    transform: scale(0.5,1.5);
+  }
+  100%{
+    transform: scale(1,1);
+  }
+}
+
+@keyframes animation2{
+  0%{
+    transform: scale(1,1);
+  }
+  50%{
+    transform: scale(0.5,1.5);
+  }
+  100%{
+    transform: scale(1,1);
+  }
+}
+
+
 
