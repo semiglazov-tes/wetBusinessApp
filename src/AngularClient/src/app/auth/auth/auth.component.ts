@@ -1,10 +1,9 @@
-//@ts-nocheck
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgClass} from "@angular/common";
-import {ReactiveFormsModule, FormGroup, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, Validators, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../serviсes/AuthServiсe";
-
-
+import {LoginForm} from "../interfaces/LoginForm";
+import {RegistrationForm} from "../interfaces/RegistrationForm";
 
 @Component({
   selector: 'app-auth',
@@ -16,38 +15,44 @@ import {AuthService} from "../serviсes/AuthServiсe";
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   isRegistered = false;
   private invalidLogin = true;
   private authService:AuthService;
+  private formBuilder:FormBuilder;
+  public loginForm!: FormGroup<LoginForm>;
+  public registrationForm!: FormGroup<RegistrationForm>;
 
 
-  constructor(authService:AuthService) {
+  constructor(authService:AuthService, formBuilder:FormBuilder) {
     this.authService = authService;
+    this.formBuilder = formBuilder;
+  }
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.nonNullable.group({
+      UserName: ['', Validators.required],
+      Password: ['', Validators.required],
+    });
+
+    this.registrationForm = this.formBuilder.nonNullable.group({
+      UserName: ['', Validators.required],
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
+    });
   }
 
   register() {
     this.isRegistered = true;
   }
 
-  login = ( ) => {
+  login()  {
     this.isRegistered = false;
     }
-
-  registrationForm= new FormGroup({
-    name: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl()
-  })
 
   onRegistrationSubmit() {
     console.log(this.registrationForm.value)
   }
-
-  loginForm= new FormGroup({
-    username: new FormControl(null,Validators.required),
-    password: new FormControl(null,Validators.required)
-  })
 
   onLoginSubmit() {
     console.log(this.loginForm.value)
