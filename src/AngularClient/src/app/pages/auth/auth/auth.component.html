@@ -1,19 +1,19 @@
 <div class="background-container">
-  <div class="container" [ngClass]="{'right-panel-active': isRegistered}" id="container">
+  <div class="container" [ngClass]="{'right-panel-active': !isRegistered}" id="container">
     <div class="form-container sign-up-container">
       <form [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit()">
         <h1>Регистрация</h1>
-        <input type="text" placeholder="Name" formControlName = "UserName"  />
-        <input type="email" placeholder="Email" formControlName = "Email" />
-        <input type="password" placeholder="Password" formControlName = "Password" />
+        <input type="text" placeholder="Name" formControlName = "userName" />
+        <input type="email" placeholder="Email" formControlName = "userEmail" />
+        <input type="password" placeholder="Password" formControlName = "password" />
         <button>Зарегистрироваться</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
       <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
         <h1>Авторизация</h1>
-        <input type="text" placeholder="Name" formControlName = "UserName"/>
-        <input type="password" placeholder="Password" formControlName = "Password" />
+        <input type="text" placeholder="Name" formControlName = "userName"/>
+        <input type="password" placeholder="Password" formControlName = "password" />
         <a href="#">Забыли пароль?</a>
         <button>Вход</button>
       </form>
