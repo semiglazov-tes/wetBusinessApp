@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WetBusinessApp.Infrastructure.DB.Entity;
+using WetBusinessApp.Infrastructure.Storage.Entity;
 
 namespace WetBusinessApp.Infrastructure.Storage.Configuration
 {

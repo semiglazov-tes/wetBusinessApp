@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WetBusinessApp.Application.Abstractions;
+using WetBusinessApp.Application.Abstractions.Storage;
 using WetBusinessApp.Domain.Entities;
 using WetBusinessApp.Infrastructure.DB;
 using WetBusinessApp.Infrastructure.Storage.Mapping;

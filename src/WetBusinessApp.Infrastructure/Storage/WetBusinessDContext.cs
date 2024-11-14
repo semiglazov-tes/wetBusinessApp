@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using WetBusinessApp.Infrastructure.DB.Entity;
 using WetBusinessApp.Infrastructure.Storage.Configuration;
+using WetBusinessApp.Infrastructure.Storage.Entity;
 
 namespace WetBusinessApp.Infrastructure.DB
 {

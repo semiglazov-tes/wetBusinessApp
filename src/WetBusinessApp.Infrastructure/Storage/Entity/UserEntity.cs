@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WetBusinessApp.Infrastructure.DB.Entity
+namespace WetBusinessApp.Infrastructure.Storage.Entity
 {
     [Table("Users")]
     public class UserEntity

@@ -1,5 +1,5 @@
 
-namespace WetBusinessApp.Application.Abstractions;
+namespace WetBusinessApp.Application.Abstractions.Storage;
 
 public interface IRepository<T> : IDisposable where T : class
 {

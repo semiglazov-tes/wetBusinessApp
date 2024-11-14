@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.CookiePolicy;
-using WetBusinessApp.Application.Abstractions;
+using WetBusinessApp.Application.Abstractions.Storage;
 using WetBusinessApp.Application.Services;
-using WetBusinessApp.Application.Utils.Auth;
+using WetBusinessApp.Infrastructure.Auth;
 using WetBusinessApp.Infrastructure.DB;
 using WetBusinessApp.Infrastructure.Storage.Repositories;
 

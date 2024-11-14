@@ -1,6 +1,8 @@
 using WetBusinessApp.Domain;
 using WetBusinessApp.Application.Abstractions;
-using WetBusinessApp.Application.Utils.Auth;
+using WetBusinessApp.Application.Abstractions.Auth;
+using WetBusinessApp.Application.Abstractions.Storage;
+
 using WetBusinessApp.Domain.Entities;
 
 namespace WetBusinessApp.Application.Services;
@@ -8,17 +10,20 @@ namespace WetBusinessApp.Application.Services;
 public class UserService
 {
     private readonly IUserRepository _userRepository;
-    private readonly JwtTokenService _jwtTokenService;
-    public UserService(IUserRepository userRepository, JwtTokenService jwtTokenService)
+    private readonly IJwtTokenService _jwtTokenService;
+    private readonly IPasswordHasher _passwordHasher;
+    
+    public UserService(IUserRepository userRepository, IJwtTokenService jwtTokenService, IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
         _jwtTokenService = jwtTokenService;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<string> Login(string userName, string password)
     {
         var user = await _userRepository.GetByUserName(userName);
-        var passwordIsValid = PasswordHasher.Verify(password, user.PasswordHash);
+        var passwordIsValid = _passwordHasher.Verify(password, user.PasswordHash);
         if (passwordIsValid) 
         {
             var jwtTokenString = _jwtTokenService.Generate(user);
@@ -33,7 +38,7 @@ public class UserService
 
     public async Task Register(string userName, string userEmail, string password )
     {
-        var passworHash = PasswordHasher.Generate(password);
+        var passworHash = _passwordHasher.Generate(password);
         var user = User.Create(Guid.NewGuid(), userName, userEmail, passworHash);
         await _userRepository.Create(user);
     }
