@@ -555,6 +555,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0",
           "WetBusinessApp.Domain": "1.0.0"
         },
         "compile": {

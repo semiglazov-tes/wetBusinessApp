@@ -1,5 +1,3 @@
-using WetBusinessApp.Domain;
-using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Application.Abstractions.Auth;
 using WetBusinessApp.Application.Abstractions.Storage;
 
@@ -20,9 +18,13 @@ public class UserService
         _passwordHasher = passwordHasher;
     }
 
-    public async Task<string> Login(string userName, string password)
+   /* public async Task<string> Login(string userName, string password)
     {
-        var user = await _userRepository.GetByUserName(userName);
+        var getUserResult = await _userRepository.GetByUserName(userName);
+        if (!getUserResult.IsSuccess)
+        {
+            
+        }
         var passwordIsValid = _passwordHasher.Verify(password, user.PasswordHash);
         if (passwordIsValid) 
         {
@@ -34,7 +36,7 @@ public class UserService
             throw new Exception("Пароль неверен");
         }
 
-    }
+    }*/
 
     public async Task Register(string userName, string userEmail, string password )
     {

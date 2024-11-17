@@ -2,7 +2,7 @@
   <div class="container" [ngClass]="{'right-panel-active': !isRegistered}" id="container">
     <div class="form-container sign-up-container">
       <form [formGroup]="registrationForm" (ngSubmit)="onRegistrationSubmit()">
-        <h1>Регистрация</h1>
+        <h2>Регистрация</h2>
         <input type="text" placeholder="Name" formControlName = "userName" />
         <input type="email" placeholder="Email" formControlName = "userEmail" />
         <input type="password" placeholder="Password" formControlName = "password" />
@@ -11,7 +11,7 @@
     </div>
     <div class="form-container sign-in-container">
       <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-        <h1>Авторизация</h1>
+        <h2>Авторизация</h2>
         <input type="text" placeholder="Name" formControlName = "userName"/>
         <input type="password" placeholder="Password" formControlName = "password" />
         <a href="#">Забыли пароль?</a>
@@ -21,12 +21,12 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <h1>Добро пожаловать!</h1>
+          <h2>Добро пожаловать!</h2>
           <p>Чтобы оставаться на связи с нами, пожалуйста, войдите в систему с вашей личной информацией</p>
           <button (click)="login()" class="ghost" id="signIn">Авторизация</button>
         </div>
         <div  class="overlay-panel overlay-right">
-          <h1>Привет, Друг!</h1>
+          <h2>Привет, Друг!</h2>
           <p>Введите свои личные данные и начните путешествие вместе с нами</p>
           <button (click)="register()"  class="ghost" id="signUp">Регистрация</button>
         </div>

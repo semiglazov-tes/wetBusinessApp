@@ -7,6 +7,8 @@ import {LoginForm} from "../interfaces/LoginForm";
 import {RegistrationForm} from "../interfaces/RegistrationForm";
 import {LoginModel} from "../interfaces/LoginModel";
 import {RegistrationModel} from "../interfaces/RegistrationModel";
+import {MatDialog} from "@angular/material/dialog";
+import {ErrorWindowComponent} from "../../../common-ui/modal-window/error-window/error-window.component";
 
 @Component({
   selector: 'app-auth',
@@ -26,12 +28,14 @@ export class AuthComponent implements OnInit {
   public loginForm!: FormGroup<LoginForm>;
   public registrationForm!: FormGroup<RegistrationForm>;
   private router: Router;
+  private dialog: MatDialog;
 
 
-  constructor(authService:AuthService, formBuilder:FormBuilder, router:Router) {
+  constructor(authService:AuthService, formBuilder:FormBuilder, router:Router, dialog:MatDialog) {
     this.authService = authService;
     this.formBuilder = formBuilder;
     this.router = router;
+    this.dialog = dialog;
   }
 
   ngOnInit(): void {
@@ -83,10 +87,16 @@ export class AuthComponent implements OnInit {
             console.log(data.statusCode);
             this.router.navigate(['/main']);
           },
-          error: (e) => console.error(e)
+          error: (e) => this.openErrorDialog(e.message || 'Произошла ошибка')
         }
       );
     }
+  }
+
+  openErrorDialog(message: string): void {
+    this.dialog.open(ErrorWindowComponent, {
+      data: { message }
+    });
   }
 }
 

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.CookiePolicy;
 using WetBusinessApp.Application.Abstractions.Storage;
 using WetBusinessApp.Application.Services;
+using WetBusinessApp.Application.UseCases.AuthenticationUseCase;
 using WetBusinessApp.Infrastructure.Auth;
 using WetBusinessApp.Infrastructure.DB;
 using WetBusinessApp.Infrastructure.Storage.Repositories;
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<WetBusinessDContext>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<RegistrationUseCase>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAuth(builder.Configuration);
 

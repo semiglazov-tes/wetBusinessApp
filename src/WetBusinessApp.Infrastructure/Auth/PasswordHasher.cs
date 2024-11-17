@@ -1,4 +1,5 @@
 using WetBusinessApp.Application.Abstractions.Auth;
+using WetBusinessApp.Domain.ValueObjects;
 
 namespace WetBusinessApp.Infrastructure.Auth;
 
@@ -9,8 +10,14 @@ public class PasswordHasher:IPasswordHasher
         return BCrypt.Net.BCrypt.EnhancedHashPassword(password);
     }
 
-    public  bool Verify(string password, string passwordHash)
+    public  Result Verify(string password, string passwordHash)
     {
-        return BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
+        bool isVerify = BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
+        if (!isVerify)
+        {
+            return Result.Fail("Введный пароль невалидный");
+        }
+
+        return Result.Ok();
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WetBusinessApp.Application.Services;
+using WetBusinessApp.Application.UseCases.AuthenticationUseCase;
 using WetBusinessApp.Presentation.Contracts;
 using WetBusinessApp.Presentation.Contracts.Login;
 using WetBusinessApp.Presentation.Contracts.Register;
@@ -10,18 +11,23 @@ namespace WetBusinessApp.Presentation.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly RegistrationUseCase _registrationUseCase;
 
-        public AuthController(UserService userService)
+        public AuthController(RegistrationUseCase registrationUseCase)
         {
-            _userService = userService;
+            _registrationUseCase = registrationUseCase;
         }
         
         [HttpPost("register")]
         public async Task<IResult> Register([FromBody] RegisterRequest request)
         {
-            await _userService.Register(request.UserName, request.UserEmail, request.Password);
-            return Results.Ok();
+            var registerResult = await _registrationUseCase.ExecuteAsync(request.UserName, request.UserEmail, request.Password);
+            if (registerResult.IsSuccess)
+            {
+                return Results.Ok();
+            }
+
+            return Results.BadRequest(registerResult.Error);
         }
 
         [HttpPost("login")]

@@ -3,3 +3,4 @@ export interface HttpResponse<T> {
   statusCode: number;
   contentType: string;
 }
+

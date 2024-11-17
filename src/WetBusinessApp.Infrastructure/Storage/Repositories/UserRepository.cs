@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using WetBusinessApp.Application.Abstractions;
 using WetBusinessApp.Application.Abstractions.Storage;
 using WetBusinessApp.Domain.Entities;
+using WetBusinessApp.Domain.ValueObjects;
 using WetBusinessApp.Infrastructure.DB;
+using WetBusinessApp.Infrastructure.Storage.Entity;
 using WetBusinessApp.Infrastructure.Storage.Mapping;
 
 namespace WetBusinessApp.Infrastructure.Storage.Repositories
@@ -31,19 +32,46 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
             Dispose(false);
         }
 
-        public async Task Create(User item)
+        public async Task<Result> Create(User item)
         {
-            var userEntity = item.UserToUserEntity(); 
-            await _dbContext.Users.AddAsync(userEntity);
-            await _dbContext.SaveChangesAsync();
-            
+            var userEntity = item.UserToUserEntity();
+
+            try
+            {
+                using (var context = _dbContext)
+                {
+                    await context.Users.AddAsync(userEntity);
+                    await context.SaveChangesAsync();
+                }
+                return Result.Ok();
+            }
+            catch (Exception e)
+            {
+                return Result.Fail("Ошибка регистрации");
+            }
         }
 
-        public async Task<User> GetByUserName(string userName)
+        public async Task<Result<string>> GetByUserName(string userName)
         {
-            var userEntity =  await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
-            var user = userEntity.UserEntityToUser();
-            return user;
+            try
+            {
+                UserEntity userEntity;
+                using (var context = _dbContext)
+                {
+                    userEntity =  await context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+                    if (userEntity == null)
+                    {
+                        return Result<string>.Fail("Данный пользователь не существует");
+                    }
+                    
+                }
+                return Result<string>.Ok(userEntity.PasswordHash);
+            }
+            catch (Exception e)
+            {
+                return Result<string>.Fail("Ошибка при получении пользователя");
+            }
+           
         }
 
         public async Task<List<User>> GetAllUser()
@@ -58,12 +86,12 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
             return users;
         }
         
-        public Task Update(User item)
+        public Task<Result<string>> Update(User item)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(Guid id)
+        public Task<Result<string>> Delete(Guid id)
         {
             throw new NotImplementedException();
         }
