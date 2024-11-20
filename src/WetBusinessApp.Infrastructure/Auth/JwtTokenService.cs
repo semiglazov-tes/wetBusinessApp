@@ -16,7 +16,7 @@ public class JwtTokenService: IJwtTokenService
     {
         AuthOptions = authOptions;
     }
-    public string Generate(User user)
+    public string Generate(User user) 
     {
         var claims = new List<Claim>
         {

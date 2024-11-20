@@ -3,10 +3,10 @@ namespace WetBusinessApp.Domain.Entities
 {
     public class User
     {
-        public Guid Id { get; private set; }
-        public string UserName { get; private set; }
-        public string UserEmail { get; private set; }
-        public string PasswordHash { get; private set; }
+        public Guid Id { get; }
+        public string UserName { get; }
+        public string UserEmail { get; }
+        public string PasswordHash { get;  }
         private User(Guid id, string userName, string userEmail, string passHash)
         {
             Id = id;

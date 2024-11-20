@@ -4,7 +4,7 @@ using WetBusinessApp.Domain.ValueObjects;
 
 namespace WetBusinessApp.Application.UseCases.AuthenticationUseCase;
 
-public class LoginUseCase
+public class LoginUseCase : ILoginUseCase
 {
     private readonly IUserRepository _userRepository;
     private readonly IJwtTokenService _jwtTokenService;
@@ -18,19 +18,22 @@ public class LoginUseCase
         _passwordHasher = passwordHasher;
     }
     
-    public async Task<Result> ExecuteAsync(string userName, string password )
+    public async Task<Result<string>> ExecuteAsync(string userName, string password )
     {
-        var getUserPassWordHashResult = await _userRepository.GetByUserName(userName);
-        if (!getUserPassWordHashResult.IsSuccess)
+        var getUserResult = await _userRepository.GetByUserName(userName);
+        if (!getUserResult.IsSuccess)
         {
-            return getUserPassWordHashResult;
+            return Result<string>.Fail(getUserResult.Error);
         }
-        var passwordValidResult = _passwordHasher.Verify(password, getUserPassWordHashResult.Value);
+        var passwordValidResult = _passwordHasher.Verify(password, getUserResult.Value.PasswordHash);
         if (!passwordValidResult.IsSuccess) 
         {
-            return passwordValidResult;
+            return Result<string>.Fail(passwordValidResult.Error);
         }
-        var jwtTokenString = _jwtTokenService.Generate(user);
-        return jwtTokenString;
+        var jwtTokenString = _jwtTokenService.Generate(getUserResult.Value);
+
+        var loginResult = Result<string>.Ok(jwtTokenString);
+
+        return loginResult;
     }
 }

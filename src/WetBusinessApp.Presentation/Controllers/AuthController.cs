@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using WetBusinessApp.Application.Services;
-using WetBusinessApp.Application.UseCases.AuthenticationUseCase;
-using WetBusinessApp.Presentation.Contracts;
+using WetBusinessApp.Application.Abstractions.Auth;
 using WetBusinessApp.Presentation.Contracts.Login;
 using WetBusinessApp.Presentation.Contracts.Register;
 
@@ -11,11 +9,13 @@ namespace WetBusinessApp.Presentation.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly RegistrationUseCase _registrationUseCase;
+        private readonly IRegistrationUseCase _registrationUseCase;
+        private readonly ILoginUseCase _loginUseCase;
 
-        public AuthController(RegistrationUseCase registrationUseCase)
+        public AuthController(IRegistrationUseCase registrationUseCase, ILoginUseCase loginUseCase)
         {
             _registrationUseCase = registrationUseCase;
+            _loginUseCase = loginUseCase;
         }
         
         [HttpPost("register")]
@@ -33,9 +33,15 @@ namespace WetBusinessApp.Presentation.Controllers
         [HttpPost("login")]
         public async Task<IResult> Login([FromBody] LoginRequest request)
         {
-            var token = await _userService.Login(request.UserName, request.Password);
-            Response.Cookies.Append("token", token);
-            return Results.Ok();
+            var loginResult = await _loginUseCase.ExecuteAsync(request.UserName, request.Password);
+            if (loginResult.IsSuccess)
+            {
+                var token = loginResult.Value;
+                Response.Cookies.Append("token", token);
+                return Results.Ok();
+            }
+            
+            return Results.BadRequest(loginResult.Error);
         }
     }
 }

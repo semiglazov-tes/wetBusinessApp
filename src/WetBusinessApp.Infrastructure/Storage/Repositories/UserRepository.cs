@@ -38,10 +38,10 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
 
             try
             {
-                using (var context = _dbContext)
+                using (_dbContext)
                 {
-                    await context.Users.AddAsync(userEntity);
-                    await context.SaveChangesAsync();
+                    await _dbContext.Users.AddAsync(userEntity);
+                    await _dbContext.SaveChangesAsync();
                 }
                 return Result.Ok();
             }
@@ -51,25 +51,26 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
             }
         }
 
-        public async Task<Result<string>> GetByUserName(string userName)
+        public async Task<Result<User>> GetByUserName(string userName)
         {
             try
             {
-                UserEntity userEntity;
-                using (var context = _dbContext)
+                UserEntity? userEntity;
+                using (_dbContext)
                 {
-                    userEntity =  await context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+                    userEntity =  await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
                     if (userEntity == null)
                     {
-                        return Result<string>.Fail("Данный пользователь не существует");
+                        return Result<User>.Fail("Данный пользователь не существует");
                     }
                     
                 }
-                return Result<string>.Ok(userEntity.PasswordHash);
+                var user = userEntity.UserEntityToUser();
+                return Result<User>.Ok(user);
             }
             catch (Exception e)
             {
-                return Result<string>.Fail("Ошибка при получении пользователя");
+                return Result<User>.Fail("Ошибка при получении пользователя");
             }
            
         }
@@ -86,12 +87,12 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
             return users;
         }
         
-        public Task<Result<string>> Update(User item)
+        public Task<Result> Update(User item)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Result<string>> Delete(Guid id)
+        public Task<Result> Delete(Guid id)
         {
             throw new NotImplementedException();
         }

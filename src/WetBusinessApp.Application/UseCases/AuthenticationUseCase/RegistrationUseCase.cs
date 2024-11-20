@@ -5,7 +5,7 @@ using WetBusinessApp.Domain.ValueObjects;
 
 namespace WetBusinessApp.Application.UseCases.AuthenticationUseCase;
 
-public class RegistrationUseCase
+public class RegistrationUseCase : IRegistrationUseCase
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasher _passwordHasher;

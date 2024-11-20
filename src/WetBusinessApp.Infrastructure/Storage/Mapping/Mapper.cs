@@ -10,7 +10,7 @@ public static  class Mapper
         return UserEntity.Create(user.UserName, user.UserEmail, user.PasswordHash);
     }
     
-    public static User UserEntityToUser(this UserEntity userEntity)
+    public static User UserEntityToUser(this UserEntity? userEntity)
     {
         return User.Create(userEntity.Id, userEntity.UserName, userEntity.UserEmail, userEntity.PasswordHash);
     }
