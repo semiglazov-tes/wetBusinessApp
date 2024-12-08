@@ -1,39 +1,50 @@
 using WetBusinessApp.Application.Abstractions.Auth;
 using WetBusinessApp.Application.Abstractions.Storage;
-using WetBusinessApp.Domain.ValueObjects;
+using WetBusinessApp.Application.DTO;
+using WetBusinessApp.Domain;
 
 namespace WetBusinessApp.Application.UseCases.AuthenticationUseCase;
 
 public class LoginUseCase : ILoginUseCase
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IUserStorage _userStorage; 
     private readonly IJwtTokenService _jwtTokenService;
     private readonly IPasswordHasher _passwordHasher;
     
     
-    public LoginUseCase(IUserRepository userRepository, IJwtTokenService jwtTokenService,  IPasswordHasher passwordHasher)
+    public LoginUseCase(IUserStorage userStorage, IJwtTokenService jwtTokenService,  IPasswordHasher passwordHasher)
     {
-        _userRepository = userRepository;
+        _userStorage = userStorage;
         _jwtTokenService = jwtTokenService;
         _passwordHasher = passwordHasher;
     }
     
-    public async Task<Result<string>> ExecuteAsync(string userName, string password )
+    public async Task<Result<AuthDto>> ExecuteAsync(string userName, string password )
     {
-        var getUserResult = await _userRepository.GetByUserName(userName);
+        var getUserResult = await _userStorage.GetByUserName(userName);
+        var userId = getUserResult.Value.Id;
         if (!getUserResult.IsSuccess)
         {
-            return Result<string>.Fail(getUserResult.Error);
+            return Result<AuthDto>.Fail(getUserResult.Error);
         }
-        var passwordValidResult = _passwordHasher.Verify(password, getUserResult.Value.PasswordHash);
-        if (!passwordValidResult.IsSuccess) 
+        
+        var getPasswordValidResult = _passwordHasher.Verify(password, getUserResult.Value.PasswordHash);
+        if (!getPasswordValidResult.IsSuccess) 
         {
-            return Result<string>.Fail(passwordValidResult.Error);
+            return Result<AuthDto>.Fail(getPasswordValidResult.Error);
         }
-        var jwtTokenString = _jwtTokenService.Generate(getUserResult.Value);
+        
+        var accessToken = _jwtTokenService.GenerateAccessToken(getUserResult.Value);
+        var refreshToken = _jwtTokenService.GenerateRefreshToken();
 
-        var loginResult = Result<string>.Ok(jwtTokenString);
-
+        var getUserRefreshTokenDataResult = await _userStorage.UpdateRefreshTokenData(userId, refreshToken, _jwtTokenService.RefreshTokenExpires);
+        if (!getUserRefreshTokenDataResult.IsSuccess) 
+        {
+            return Result<AuthDto>.Fail(getUserRefreshTokenDataResult.Error);
+        }
+        
+        var authDto = new AuthDto(accessToken,refreshToken);
+        var loginResult = Result<AuthDto>.Ok(authDto);
         return loginResult;
     }
 }

@@ -5,6 +5,7 @@ namespace WetBusinessApp.Application.Abstractions.Auth;
 
 public interface IJwtTokenService
 {
-    IOptions<IAuthSettings> AuthOptions { get;}
-    string Generate(User user);
+    DateTime RefreshTokenExpires{ get; }
+    string GenerateAccessToken(User user);
+    string GenerateRefreshToken();
 }

@@ -7,7 +7,7 @@ using WetBusinessApp.Application.Abstractions.Auth;
 
 namespace WetBusinessApp.Infrastructure.Auth;
 
-public static class AuthExtensions
+public static class AuthExtension
 {
     public static void AddAuth(this IServiceCollection servicesCollection, IConfiguration configuration)
     {
@@ -16,23 +16,17 @@ public static class AuthExtensions
         servicesCollection.AddScoped<IPasswordHasher,PasswordHasher>(); 
 
         var authSettings = configuration.GetSection(nameof(AuthSettings)).Get<AuthSettings>();
+        var issuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authSettings.SecretKey));
 
         servicesCollection.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(o =>
             {
-                o.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authSettings.SecretKey))
-                };
+                o.TokenValidationParameters = new TokenValidationParameters().Generate(issuerSigningKey);
                 o.Events = new JwtBearerEvents
                 {
                     OnMessageReceived = context =>
                     {
-                        context.Token = context.Request.Cookies["token"];
+                        context.Token = context.Request.Cookies["accessToken"];
                         return Task.CompletedTask;
                     }
                 };

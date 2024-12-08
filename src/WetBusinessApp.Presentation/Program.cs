@@ -13,9 +13,10 @@ builder.Services.AddCors();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<WetBusinessDContext>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IRegistrationUseCase, RegistrationUseCase>();
 builder.Services.AddScoped<ILoginUseCase, LoginUseCase>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserStorage, UserStorage>();
 builder.Services.AddAuth(builder.Configuration);
 
 var app = builder.Build();

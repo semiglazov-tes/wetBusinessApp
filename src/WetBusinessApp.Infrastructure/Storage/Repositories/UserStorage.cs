@@ -1,48 +1,30 @@
 using Microsoft.EntityFrameworkCore;
 using WetBusinessApp.Application.Abstractions.Storage;
 using WetBusinessApp.Domain.Entities;
-using WetBusinessApp.Domain.ValueObjects;
+using WetBusinessApp.Domain;
 using WetBusinessApp.Infrastructure.DB;
 using WetBusinessApp.Infrastructure.Storage.Entity;
 using WetBusinessApp.Infrastructure.Storage.Mapping;
 
 namespace WetBusinessApp.Infrastructure.Storage.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserStorage : IUserStorage
     {
-        private bool _disposed = false;
         private readonly WetBusinessDContext _dbContext;
-        protected virtual void Dispose(bool disposing)   
-        {
-            if (_disposed) return;
-            if (disposing)
-            {
-                _dbContext.DisposeAsync();
-            }
-            _disposed = true;
-        }
-
-        public UserRepository(WetBusinessDContext dbcontext)
+        
+        public UserStorage(WetBusinessDContext dbcontext)
         {   
             _dbContext = dbcontext;
         }
-
-        ~UserRepository()
+        
+        public async Task<Result> Create(User user)
         {
-            Dispose(false);
-        }
-
-        public async Task<Result> Create(User item)
-        {
-            var userEntity = item.UserToUserEntity();
+            var userEntity = user.UserToUserEntity();
 
             try
             {
-                using (_dbContext)
-                {
-                    await _dbContext.Users.AddAsync(userEntity);
-                    await _dbContext.SaveChangesAsync();
-                }
+                await _dbContext.Users.AddAsync(userEntity);
+                await _dbContext.SaveChangesAsync();
                 return Result.Ok();
             }
             catch (Exception e)
@@ -55,15 +37,10 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
         {
             try
             {
-                UserEntity? userEntity;
-                using (_dbContext)
+                var userEntity =  await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+                if (userEntity == null)
                 {
-                    userEntity =  await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userName);
-                    if (userEntity == null)
-                    {
-                        return Result<User>.Fail("Данный пользователь не существует");
-                    }
-                    
+                    return Result<User>.Fail("Данный пользователь не существует");
                 }
                 var user = userEntity.UserEntityToUser();
                 return Result<User>.Ok(user);
@@ -74,7 +51,7 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
             }
            
         }
-
+        
         public async Task<List<User>> GetAllUser()
         {
             var userEntitys = await _dbContext.Users.ToListAsync();
@@ -87,21 +64,26 @@ namespace WetBusinessApp.Infrastructure.Storage.Repositories
             return users;
         }
         
-        public Task<Result> Update(User item)
+        public async Task<Result> UpdateRefreshTokenData(Guid userId, string refreshToken, DateTime refreshTokenExpiryTime)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var userEntity =  await _dbContext.Users.FirstAsync(u => u.Id == userId);
+                userEntity.RefreshToken = refreshToken;
+                userEntity.RefreshTokenExpiryTime = refreshTokenExpiryTime;
+                
+                _dbContext.Attach(userEntity);
+                _dbContext.Entry(userEntity).Property(u => u.RefreshToken).IsModified = true;
+                _dbContext.Entry(userEntity).Property(u => u.RefreshTokenExpiryTime).IsModified = true;
 
-        public Task<Result> Delete(Guid id)
-        {
-            throw new NotImplementedException();
+                await _dbContext.SaveChangesAsync();
+                return Result.Ok();
+            }
+            catch (Exception e)
+            {
+                return Result.Fail("Ошибка при обновлении данных Refresh Token");
+            }
+            
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
     }
 }

@@ -1,5 +1,5 @@
 using WetBusinessApp.Application.Abstractions.Auth;
-using WetBusinessApp.Domain.ValueObjects;
+using WetBusinessApp.Domain;
 
 namespace WetBusinessApp.Infrastructure.Auth;
 

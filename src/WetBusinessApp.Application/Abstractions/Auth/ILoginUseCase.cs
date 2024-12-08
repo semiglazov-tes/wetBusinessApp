@@ -1,8 +1,9 @@
-using WetBusinessApp.Domain.ValueObjects;
+using WetBusinessApp.Application.DTO;
+using WetBusinessApp.Domain;
 
 namespace WetBusinessApp.Application.Abstractions.Auth;
 
 public interface ILoginUseCase
 {
-    Task<Result<string>> ExecuteAsync(string userName, string password);
+    Task<Result<AuthDto>> ExecuteAsync(string userName, string password);
 }

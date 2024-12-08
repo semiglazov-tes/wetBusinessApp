@@ -36,8 +36,10 @@ namespace WetBusinessApp.Presentation.Controllers
             var loginResult = await _loginUseCase.ExecuteAsync(request.UserName, request.Password);
             if (loginResult.IsSuccess)
             {
-                var token = loginResult.Value;
-                Response.Cookies.Append("token", token);
+                var accessToken = loginResult.Value.AccessToken;
+                var refreshToken = loginResult.Value.RefreshToken;
+                Response.Cookies.Append("accessToken", accessToken);
+                Response.Cookies.Append("refreshToken", refreshToken);
                 return Results.Ok();
             }
             

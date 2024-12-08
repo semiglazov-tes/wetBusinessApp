@@ -13,6 +13,7 @@ namespace WetBusinessApp.Infrastructure.DB
         public WetBusinessDContext(IConfiguration configuration)
         {
             _configuration = configuration;
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

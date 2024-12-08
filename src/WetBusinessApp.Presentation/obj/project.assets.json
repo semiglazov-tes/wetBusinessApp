@@ -581,6 +581,7 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.0",
+          "Microsoft.IdentityModel.Tokens": "6.10.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.0",
           "WetBusinessApp.Application": "1.0.0"
         },

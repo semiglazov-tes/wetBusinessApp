@@ -2,6 +2,8 @@ namespace WetBusinessApp.Application.Abstractions.Auth;
 
 public interface IAuthSettings
 {
-    TimeSpan Expires { get; }
-    string SecretKey { get; }
+    TimeSpan AccessTokenExpires { get; set; }
+    TimeSpan RefreshTokenExpires { get; set; }
+    string SecretKey { get; set; }
+    
 }

@@ -1,4 +1,4 @@
-using WetBusinessApp.Domain.ValueObjects;
+using WetBusinessApp.Domain;
 
 namespace WetBusinessApp.Application.Abstractions.Auth;
 

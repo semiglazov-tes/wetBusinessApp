@@ -1,26 +1,26 @@
 using WetBusinessApp.Application.Abstractions.Auth;
 using WetBusinessApp.Application.Abstractions.Storage;
 using WetBusinessApp.Domain.Entities;
-using WetBusinessApp.Domain.ValueObjects;
+using WetBusinessApp.Domain;
 
 namespace WetBusinessApp.Application.UseCases.AuthenticationUseCase;
 
 public class RegistrationUseCase : IRegistrationUseCase
 {
-    private readonly IUserRepository _userRepository;
+    private readonly IUserStorage _userStorage;
     private readonly IPasswordHasher _passwordHasher;
     
-    public RegistrationUseCase(IUserRepository userRepository, IPasswordHasher passwordHasher)
+    public RegistrationUseCase(IUserStorage userStorage, IPasswordHasher passwordHasher)
     {
-        _userRepository = userRepository;
+        _userStorage = userStorage;
         _passwordHasher = passwordHasher;
     }
     
     public async Task<Result> ExecuteAsync(string userName, string userEmail, string password )
     {
-        var passworHash = _passwordHasher.Generate(password);
-        var user = User.Create(Guid.NewGuid(), userName, userEmail, passworHash);
-        var registerResult = await _userRepository.Create(user);
+        var passwordHash = _passwordHasher.Generate(password);
+        var user = User.Create(Guid.NewGuid(), userName, userEmail, passwordHash);
+        var registerResult = await _userStorage.Create(user);
         return registerResult;
     }
 }

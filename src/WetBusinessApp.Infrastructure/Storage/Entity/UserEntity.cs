@@ -6,28 +6,34 @@ namespace WetBusinessApp.Infrastructure.Storage.Entity
     public class UserEntity
     {
         [Column("Id")]
-        public Guid Id { get;  set; }
+        public Guid Id { get;}
 
         [Column("Name")]
-        public string UserName { get; set; }
+        public string UserName { get;}
 
         [Column("Email")]
-        public string UserEmail { get; set; }
+        public string UserEmail { get;}
 
         [Column("Password")]
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get;}
         
-        private UserEntity(string userName, string userEmail, string passwordHash)
+        [Column("RefreshToken")]
+        public string? RefreshToken { get; set; }
+        
+        [Column("RefreshTokenExpiryTime")]
+        public DateTime? RefreshTokenExpiryTime { get; set; }
+        
+        private UserEntity(string userName, string userEmail, string passwordHash, string? refreshToken = null, DateTime? refreshTokenExpiryTime = null)
         {
-        
             UserName = userName;
             UserEmail = userEmail;
             PasswordHash = passwordHash;
-
+            RefreshToken = refreshToken;
+            RefreshTokenExpiryTime = refreshTokenExpiryTime;
         }
-        public static UserEntity Create(string userName, string userEmail, string passwordHash)
+        public static UserEntity Create(string userName, string userEmail, string passwordHash, string? refreshToken = null, DateTime? refreshTokenExpiryTime = null)
         {
-            return new UserEntity(userName, userEmail, passwordHash);
+            return new UserEntity(userName, userEmail, passwordHash, refreshToken, refreshTokenExpiryTime);
         }
     }
 }
