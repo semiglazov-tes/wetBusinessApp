@@ -5,5 +5,5 @@ namespace WetBusinessApp.Application.Abstractions.Auth;
 
 public interface ILoginUseCase
 {
-    Task<Result<AuthDto>> ExecuteAsync(string userName, string password);
+    Task<Result<AuthDTO>> ExecuteAsync(string userName, string password);
 }

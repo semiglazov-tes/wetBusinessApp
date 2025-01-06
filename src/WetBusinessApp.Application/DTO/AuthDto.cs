@@ -1,3 +1,3 @@
 namespace WetBusinessApp.Application.DTO;
 
-public record AuthDto(string AccessToken, string RefreshToken);
+public record AuthDTO(string AccessToken, string RefreshToken);

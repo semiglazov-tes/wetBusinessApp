@@ -26,7 +26,6 @@ namespace WetBusinessApp.Presentation.Controllers
             {
                 return Results.Ok();
             }
-
             return Results.BadRequest(registerResult.Error);
         }
 

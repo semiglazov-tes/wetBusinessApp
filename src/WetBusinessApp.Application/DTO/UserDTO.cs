@@ -1,6 +1,6 @@
 namespace WetBusinessApp.Application.DTO;
 
-public class UserDto
+public class UserDTO
 {
     
 }

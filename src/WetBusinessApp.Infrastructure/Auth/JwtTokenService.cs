@@ -10,7 +10,7 @@ using WetBusinessApp.Domain.Entities;
 
 namespace WetBusinessApp.Infrastructure.Auth;
 
-public class JwtTokenService: IJwtTokenService
+public class JwtTokenService:IJwtTokenService
 {
     private readonly SymmetricSecurityKey _issuerSigningKey;
     private readonly DateTime _accessTokenExpires;
@@ -21,15 +21,15 @@ public class JwtTokenService: IJwtTokenService
         var claims = new List<Claim>
         {
             new Claim("userEmail", user.UserEmail),
-            new Claim("userName",user.UserName)
+            new Claim(ClaimTypes.Name,user.UserName)
         };
         return claims;
     }
     
     public JwtTokenService(IOptions<AuthSettings> authOptions)
     {
-        _accessTokenExpires = DateTime.UtcNow.Add(authOptions.Value.AccessTokenExpires);
-        RefreshTokenExpires = DateTime.Now.Add(authOptions.Value.RefreshTokenExpires);
+        _accessTokenExpires = DateTime.Now.Add(authOptions.Value.AccessTokenExpires);
+        RefreshTokenExpires = DateTime.UtcNow.Add(authOptions.Value.RefreshTokenExpires);
         _issuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authOptions.Value.SecretKey));
     }
     public string GenerateAccessToken(User user)
@@ -58,7 +58,7 @@ public class JwtTokenService: IJwtTokenService
         }
     }
     
-    public Result<ClaimsPrincipal>  GetPrincipalFromExpiredToken(string token)
+    public Result<string>  GetUserNameFromExpiredToken(string token)
     {
         var tokenValidationParameters = new TokenValidationParameters().Generate(_issuerSigningKey);
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -66,9 +66,9 @@ public class JwtTokenService: IJwtTokenService
         var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
         var jwtSecurityToken = securityToken as JwtSecurityToken;
         if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
-            return Result<ClaimsPrincipal>.Fail("Невалидный токен");
+            return Result<string>.Fail("Невалидный токен");
         
-        return  Result<ClaimsPrincipal>.Ok(principal) ;
+        return  Result<string>.Ok(principal.Identity.Name) ;
     }
     
       

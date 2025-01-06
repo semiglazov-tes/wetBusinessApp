@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WetBusinessApp.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+819cc4f13ec79ea6fe40c20a9d2cdec8bce5bf82")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac8722b7b60f923cd3c46ec7251e7b4d73125ad8")]
 [assembly: System.Reflection.AssemblyProductAttribute("WetBusinessApp.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WetBusinessApp.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
