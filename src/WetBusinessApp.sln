@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WetBusinessApp.Presentation", "WetBusinessApp.Presentation\WetBusinessApp.Presentation.csproj", "{DF769530-9B7A-4259-A9E4-FF7E8721DE26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WetBusinessApp.Domain", "WetBusinessApp.Domain\WetBusinessApp.Domain.csproj", "{2DC1AF9E-4B0E-437D-8F13-6D51B6FE38EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WetBusinessApp.Domain", "WetBusinessApp.Domain\WetBusinessApp.Domain.csproj", "{2DC1AF9E-4B0E-437D-8F13-6D51B6FE38EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WetBusinessApp.Infrastructure", "WetBusinessApp.Infrastructure\WetBusinessApp.Infrastructure.csproj", "{15394658-CA1A-4D10-97C8-A2274843ACFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WetBusinessApp.Infrastructure", "WetBusinessApp.Infrastructure\WetBusinessApp.Infrastructure.csproj", "{15394658-CA1A-4D10-97C8-A2274843ACFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WetBusinessApp.Application", "WetBusinessApp.Application\WetBusinessApp.Application.csproj", "{54DFE3EE-11D3-4B2A-A3A9-17349E8902C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{15394658-CA1A-4D10-97C8-A2274843ACFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15394658-CA1A-4D10-97C8-A2274843ACFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15394658-CA1A-4D10-97C8-A2274843ACFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54DFE3EE-11D3-4B2A-A3A9-17349E8902C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DFE3EE-11D3-4B2A-A3A9-17349E8902C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DFE3EE-11D3-4B2A-A3A9-17349E8902C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DFE3EE-11D3-4B2A-A3A9-17349E8902C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

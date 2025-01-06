@@ -1,4 +1,6 @@
-/data/
+src/AngularClient/src/app/Assets
+/Commom
+/data
 # Ignore compiled output and other generated files for Angular
 /dist/
 /*.js
@@ -66,6 +68,7 @@ npm-debug.log
 
 # Ignore Visual Studio Code files
 .vscode/
+.vs/
 
 # Ignore JetBrains Rider files
 .idea/
